@@ -281,3 +281,13 @@ class UtilitiesRabbitmq:
             rabbitmq.chanel.exchange_delete(exchange_name=name)
 
         _self()
+
+    @staticmethod
+    def queue_unbind(queue_name: str, exchange_name: str, url: str, routing_key: str = None, channel_number: int = 1):
+        """Отвязать очередь от точки обмена"""
+
+        @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
+        def _self(rabbitmq: RabbitmqAsync):
+            rabbitmq.queue[queue_name].unbind(exchange=exchange_name, routing_key=routing_key)
+
+        _self()
