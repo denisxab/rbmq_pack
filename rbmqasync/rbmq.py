@@ -40,6 +40,10 @@ class RabbitmqAsync:
 
     https://aio-pika.readthedocs.io/en/latest/rabbitmq-tutorial/2-work-queues.html#message-durability
 
+    # Клиент серверный (!!!)
+
+    https://aio-pika.readthedocs.io/en/latest/rabbitmq-tutorial/6-rpc.html
+
     """
 
     __slots__ = [
