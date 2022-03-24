@@ -255,3 +255,29 @@ class RabbitmqAsync:
             return warp
 
         return inner
+
+
+class UtilitiesRabbitmq:
+    """
+    Утилиты для Rabbitmq
+    """
+
+    @staticmethod
+    def queue_delete(name: str, url: str, channel_number: int = 1):
+        """Удалить очередь по имени"""
+
+        @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
+        def _self(rabbitmq: RabbitmqAsync):
+            rabbitmq.chanel.queue_delete(queue_name=name)
+
+        _self()
+
+    @staticmethod
+    def exchange_delete(name: str, url: str, channel_number: int = 1):
+        """Удалить точку обмена по имени"""
+
+        @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
+        def _self(rabbitmq: RabbitmqAsync):
+            rabbitmq.chanel.exchange_delete(exchange_name=name)
+
+        _self()
