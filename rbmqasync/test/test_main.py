@@ -82,7 +82,7 @@ class Test_Exchange:
 
         @Rabbitmq.Connect()
         # Случайная очередь для отправки серверу информации
-        @Rabbitmq.Queue(random_exclusive_queue=True)
+        @Rabbitmq.Queue(exclusive=True)
         # Очередь дял получения данных с сервера
         @Rabbitmq.Queue(name=name_queue)
         def client(rabbitmq: Rabbitmq):
@@ -152,14 +152,14 @@ class Test_Exchange:
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.topic)
         # Получаем сообщения в свою очередь, которые имеют указанны путь (в данном случае совпадает по шаблону)
         # Это сообщения не удалиться из очереди, оно будет также доступно другим очередям.
-        @Rabbitmq.Queue(routing_key=("*.git",), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=("*.git",), exclusive=True)
         def consumer_echange_topic(rabbitmq):
             send_consumer_T(rabbitmq, data_consumer1)
 
         # То же самое только отслеживается другой путь
         @Rabbitmq.Connect()
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.topic)
-        @Rabbitmq.Queue(routing_key=("user.#",), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=("user.#",), exclusive=True)
         def consumer_echange_topic2(rabbitmq):
             send_consumer_T(rabbitmq, data_consumer2)
 
@@ -204,14 +204,14 @@ class Test_Exchange:
         @Rabbitmq.Connect()
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.direct)
         # Указываем какие точные пути мы будем отслеживать для данной очереди
-        @Rabbitmq.Queue(routing_key=("pip",), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=("pip",), exclusive=True)
         def consumer_echange_direct(rabbitmq: Rabbitmq):
             send_consumer_T(rabbitmq, data_consumer1)
 
         @Rabbitmq.Connect()
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.direct)
         # Указываем какие точные пути мы будем отслеживать для данной очереди
-        @Rabbitmq.Queue(routing_key=("git", 'pip'), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=("git", 'pip'), exclusive=True)
         def consumer_echange_direct2(rabbitmq: Rabbitmq):
             send_consumer_T(rabbitmq, data_consumer2)
 
@@ -252,13 +252,13 @@ class Test_Exchange:
 
         @Rabbitmq.Connect()
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.fanout)
-        @Rabbitmq.Queue(routing_key=('',), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=('',), exclusive=True)
         def consumer_echange_fanout(rabbitmq: Rabbitmq):
             send_consumer_T(rabbitmq, data_consumer1)
 
         @Rabbitmq.Connect()
         @Rabbitmq.Exchange(name=exchange, type_=ExchangeType.fanout)
-        @Rabbitmq.Queue(routing_key=('',), random_exclusive_queue=True)
+        @Rabbitmq.Queue(routing_key=('',), exclusive=True)
         def consumer_echange_fanout2(rabbitmq: Rabbitmq):
             send_consumer_T(rabbitmq, data_consumer2)
 

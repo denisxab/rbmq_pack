@@ -69,13 +69,14 @@ class RabbitmqAsync:
         """
         Отправить сообщение в точку обмена
 
-        :param delivery_mode:
-
-        - DeliveryMode.PERSISTENT - Сохранить сообщение на диске
 
         :param exchange_name: Имя точки обмена
         :param routing_key: Ключевые пути
         :param message: Сообщение
+
+        :param delivery_mode:
+
+            - DeliveryMode.PERSISTENT - Сохранить сообщение на диске
         """
         message = message.encode("utf-8")
         for _r in routing_key:
@@ -201,20 +202,18 @@ class RabbitmqAsync:
 
     @staticmethod
     def Queue(
-            name: str = '',
+            name: str,
             bind: Optional[dict[str, tuple[str, ...]]] = None,
-
-            random_exclusive_queue: bool = False,
+            exclusive: bool = False,
             durable=False,
     ):
         """
         Создать очередь
 
         :param durable: Если ``True`` очередь будет прочной и не удалиться
-        :param name: Имя очереди
+        :param name: Имя очереди, если '' то у очереди будет случайное уникальное имя
         :param bind: Связать очередь с точкой обмена -  {"ExchangeName": ("КлючевыеПути", ... ) ... }
-        :param random_exclusive_queue: Если ``True`` у очереди будет случайное уникально имя, а также эта
-        очередь будет удалена при закрытии соединения.
+        :param exclusive: Очередь будет удалена при закрытии соединения.
         В это случае ключ в ``rabbitmq.queue``, будет называться по индексу создания очереди
         """
 
@@ -222,24 +221,14 @@ class RabbitmqAsync:
 
             async def warp(*args, rabbitmq: RabbitmqAsync, **kwargs):
 
-                async def createQueue() -> AbstractRobustQueue:
-
-                    if random_exclusive_queue:
-                        # Создать случайную уникальную очередь
-                        return await rabbitmq.chanel.declare_queue(
-                            # '' - означает взять случайное уникальное имя очереди
-                            name="",
-                            # После того как соединение будет закрыта очередь удалиться
-                            exclusive=True, durable=durable,
-                        )
-                    else:
-                        # Создаем очередь с указанным именем
-                        return await rabbitmq.chanel.declare_queue(
-                            name=name, durable=durable,
-                        )
-
                 # Создаем очередь
-                queue_obj: AbstractRobustQueue = await createQueue()
+                queue_obj: AbstractRobustQueue = await rabbitmq.chanel.declare_queue(
+                    # '' - означает взять случайное уникальное имя очереди
+                    name=name,
+                    # После того как соединение будет закрыта очередь удалиться
+                    exclusive=exclusive,
+                    durable=durable,
+                )
                 logger.rabbitmq_info(f"{queue_obj.name=}", flag="CREATE_QUEUE")
 
                 #: Привязать ключевые пути если они есть

@@ -27,7 +27,7 @@ class te_topic:
     @staticmethod
     @RabbitmqAsync.Connect(RABBITMQ_URL)
     @RabbitmqAsync.Exchange(name=exchange_name, type_=ExchangeType.TOPIC)
-    @RabbitmqAsync.Queue(bind={exchange_name: ("*.git",)}, random_exclusive_queue=True)
+    @RabbitmqAsync.Queue(bind={exchange_name: ("*.git",)}, exclusive=True)
     async def consumer_echange_topic1(rabbitmq: RabbitmqAsync):
         logger.info("consumer_1", "START")
         await rabbitmq.consume('0', rabbitmq.get_message)
@@ -35,7 +35,7 @@ class te_topic:
     @staticmethod
     @RabbitmqAsync.Connect(RABBITMQ_URL)
     @RabbitmqAsync.Exchange(name=exchange_name, type_=ExchangeType.TOPIC)
-    @RabbitmqAsync.Queue(name='qwe', durable=True, bind={exchange_name: ("user.#",)}, random_exclusive_queue=False)
+    @RabbitmqAsync.Queue(bind={exchange_name: ("user.#",)}, exclusive=True)
     async def consumer_echange_topic2(rabbitmq: RabbitmqAsync):
         logger.info("consumer_2", "START")
         await rabbitmq.consume('qwe', rabbitmq.get_message)
