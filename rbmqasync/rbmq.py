@@ -263,7 +263,7 @@ class UtilitiesRabbitmq:
     """
 
     @staticmethod
-    def queue_delete(name: str, url: str, channel_number: int = 1):
+    def queue_delete(name: str, *, url: str, channel_number: int = 1):
         """Удалить очередь по имени"""
 
         @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
@@ -273,7 +273,7 @@ class UtilitiesRabbitmq:
         _self()
 
     @staticmethod
-    def exchange_delete(name: str, url: str, channel_number: int = 1):
+    def exchange_delete(name: str, *, url: str, channel_number: int = 1):
         """Удалить точку обмена по имени"""
 
         @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
@@ -283,7 +283,10 @@ class UtilitiesRabbitmq:
         _self()
 
     @staticmethod
-    def queue_unbind(queue_name: str, exchange_name: str, url: str, routing_key: str = None, channel_number: int = 1):
+    def queue_unbind(queue_name: str, exchange_name: str, *,
+                     url: str,
+                     routing_key: str = None,
+                     channel_number: int = 1):
         """Отвязать очередь от точки обмена"""
 
         @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
