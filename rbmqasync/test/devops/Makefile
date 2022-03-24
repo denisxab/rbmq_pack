@@ -21,3 +21,6 @@ docker_id_rabbitmq:
 
 docker_restart_postgres:
 	sudo docker restart $(POSTGRES_CONTAINER_NAME)
+
+docker_exec:
+	sudo docker exec -it $(RABBITMQ_CONTAINER_NAME) bash

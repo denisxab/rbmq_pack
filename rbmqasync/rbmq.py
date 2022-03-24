@@ -14,6 +14,32 @@ logger.rabbitmq_info = logger.info
 class RabbitmqAsync:
     """
     Класс с асинхронными декораторами для ``Rabbitmq``
+
+    https://aio-pika.readthedocs.io/en/latest/apidoc.html
+
+
+    # Подтверждение сообщения
+
+    https://aio-pika.readthedocs.io/en/latest/apidoc.html#aio_pika.IncomingMessage
+
+    queue.consume()
+
+    - `no_ack=True` - Автоматически подержать сообщение при получении.
+    - `no_ack=False` - Отметить автоматическое подтверждение при получении сообщения.
+
+    Подтверждать в этом случае нужно вручную:
+
+    - await message.ack() - Потвердеть получение сообщения
+    - async with message.process(): ... - подтвердит сообщение
+        при выходе из контекста, а если контекстный процессор поймает исключение,
+        сообщение будет возвращено в очередь.
+
+    - await message.reject(True) - Отменить получение, и вернуть сообщение в очередь
+
+    # Долговечность сообщения
+
+    https://aio-pika.readthedocs.io/en/latest/rabbitmq-tutorial/2-work-queues.html#message-durability
+
     """
 
     __slots__ = [
@@ -39,9 +65,13 @@ class RabbitmqAsync:
         #: Ключевые пути
         self.routing_key: dict[str, list[str]] = dict() if routing_key is None else routing_key
 
-    async def publish(self, exchange_name: str, routing_key: tuple[str, ...], message: str):
+    async def publish(self, exchange_name: str, routing_key: tuple[str, ...], message: str, delivery_mode=None):
         """
         Отправить сообщение в точку обмена
+
+        :param delivery_mode:
+
+        - DeliveryMode.PERSISTENT - Сохранить сообщение на диске
 
         :param exchange_name: Имя точки обмена
         :param routing_key: Ключевые пути
@@ -50,7 +80,8 @@ class RabbitmqAsync:
         message = message.encode("utf-8")
         for _r in routing_key:
             logger.success(f"{message=}|{exchange_name=}|{routing_key=}", "SEND_MESSAGE")
-            await self.exchange[exchange_name].publish(Message(body=message), routing_key=_r)
+            await self.exchange[exchange_name].publish(Message(
+                body=message, delivery_mode=delivery_mode), routing_key=_r)
 
     class CallbackConsume(Protocol):
         async def __call__(self, message: AbstractIncomingMessage, *args, **kwargs) -> Any: ...
@@ -63,7 +94,10 @@ class RabbitmqAsync:
         :param callback_: Функция вызовется при получении сообщения
         """
         logger.info(f"{queue_name=}|{self.queue[queue_name]}", "CONSUME")
-        await self.queue[queue_name].consume(callback=callback_)
+
+        await self.queue[queue_name].consume(callback=callback_,
+                                             # Отключить авто подтверждение получения сообщения
+                                             no_ack=False)
         # Вечный цикл
         await Future()
 
@@ -80,11 +114,15 @@ class RabbitmqAsync:
     def Connect(
             url: str,
             channel_number: int = 1,
+            prefetch_count: int = 0,
+            prefetch_size: int = 0,
     ):
         """
         Декоратор для подключения к ``Rabbitmq``
 
         :param url: Url для подключения к Rabbitmq.
+        :param prefetch_count: Максимальное количество сообщений в очереди
+        :param prefetch_size: Максимальный размер очереди
 
         :Пример:
 
@@ -103,6 +141,17 @@ class RabbitmqAsync:
                     rabbitmq: RabbitmqAsync = RabbitmqAsync(
                         chanel=await connection.channel(channel_number=channel_number)
                     )
+
+                    #: Устанавливаем ограничения каналу для отправки сообщений в одну очередь
+                    #: Количество/размер сообщений, которые могут стоять в очереди для этого получателя.
+                    #: Если превысить эти значения, то сообщения отправятся другому свободному получателю.
+                    await rabbitmq.chanel.set_qos(
+                        # Макс количество сообщений
+                        prefetch_count=prefetch_count,
+                        # Макс размер очереди
+                        prefetch_size=prefetch_size
+                    )
+
                     logger.rabbitmq_info(f"{channel_number=}", flag='CREATE_CHANEL')
                     await func(
                         *arg,
@@ -154,19 +203,19 @@ class RabbitmqAsync:
     def Queue(
             name: str = '',
             bind: Optional[dict[str, tuple[str, ...]]] = None,
-            prefetch_count: int = 0,
-            prefetch_size: int = 0,
+
             random_exclusive_queue: bool = False,
+            durable=False,
     ):
         """
         Создать очередь
 
+        :param durable: Если ``True`` очередь будет прочной и не удалиться
         :param name: Имя очереди
         :param bind: Связать очередь с точкой обмена -  {"ExchangeName": ("КлючевыеПути", ... ) ... }
-        :param prefetch_count: Максимальное количество сообщений в очереди
-        :param prefetch_size: Максимальный размер очереди
-        :param random_exclusive_queue: Если ``True`` у очереди будет случайное уникально имя,
-        в это случае ключ в ``rabbitmq.queue``, будет называться по индексу создания очереди
+        :param random_exclusive_queue: Если ``True`` у очереди будет случайное уникально имя, а также эта
+        очередь будет удалена при закрытии соединения.
+        В это случае ключ в ``rabbitmq.queue``, будет называться по индексу создания очереди
         """
 
         def inner(func: Callable):
@@ -174,27 +223,24 @@ class RabbitmqAsync:
             async def warp(*args, rabbitmq: RabbitmqAsync, **kwargs):
 
                 async def createQueue() -> AbstractRobustQueue:
-                    """Создать случайную уникальную очередь"""
+
                     if random_exclusive_queue:
+                        # Создать случайную уникальную очередь
                         return await rabbitmq.chanel.declare_queue(
                             # '' - означает взять случайное уникальное имя очереди
                             name="",
                             # После того как соединение будет закрыта очередь удалиться
-                            exclusive=True
+                            exclusive=True, durable=durable,
                         )
                     else:
+                        # Создаем очередь с указанным именем
                         return await rabbitmq.chanel.declare_queue(
-                            name=name,
+                            name=name, durable=durable,
                         )
 
                 # Создаем очередь
                 queue_obj: AbstractRobustQueue = await createQueue()
                 logger.rabbitmq_info(f"{queue_obj.name=}", flag="CREATE_QUEUE")
-
-                #: Устанавливаем ограничения
-                #: Количество/размер сообщений, которые могут стоять в очереди для этого получателя.
-                #: Если превысить эти значения, то сообщения отправятся другому свободному получателю.
-                await rabbitmq.chanel.set_qos(prefetch_count=prefetch_count, prefetch_size=prefetch_size)
 
                 #: Привязать ключевые пути если они есть
                 if bind:

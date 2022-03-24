@@ -35,17 +35,17 @@ class te_topic:
     @staticmethod
     @RabbitmqAsync.Connect(RABBITMQ_URL)
     @RabbitmqAsync.Exchange(name=exchange_name, type_=ExchangeType.TOPIC)
-    @RabbitmqAsync.Queue(bind={exchange_name: ("user.#",)}, random_exclusive_queue=True)
+    @RabbitmqAsync.Queue(name='qwe', durable=True, bind={exchange_name: ("user.#",)}, random_exclusive_queue=False)
     async def consumer_echange_topic2(rabbitmq: RabbitmqAsync):
         logger.info("consumer_2", "START")
-        await rabbitmq.consume('0', rabbitmq.get_message)
+        await rabbitmq.consume('qwe', rabbitmq.get_message)
 
     @staticmethod
     @RabbitmqAsync.Connect(RABBITMQ_URL)
     @RabbitmqAsync.Exchange(name=exchange_name, type_=ExchangeType.TOPIC)
     async def producer_echange_topic(rabbitmq: RabbitmqAsync):
         logger.info("producer", "START")
-        await rabbitmq.publish(exchange_name, routing_key=(".git",),
+        await rabbitmq.publish(exchange_name, routing_key=("user.git",),
                                message=f"Hello {datetime.now()}")
 
     # async def main_lop():
