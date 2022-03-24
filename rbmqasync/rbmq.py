@@ -40,6 +40,15 @@ class RabbitmqAsync:
 
     https://aio-pika.readthedocs.io/en/latest/rabbitmq-tutorial/2-work-queues.html#message-durability
 
+    1) Создать устойчивую очередь
+
+        @RabbitmqAsync.Queue(durable=True):...
+
+    2) Отправлять устойчивые сообщения
+
+        await publish(delivery_mode=DeliveryMode.PERSISTENT)
+
+
     # Клиент серверный (!!!)
 
     https://aio-pika.readthedocs.io/en/latest/rabbitmq-tutorial/6-rpc.html
@@ -214,7 +223,7 @@ class RabbitmqAsync:
         """
         Создать очередь
 
-        :param durable: Если ``True`` очередь будет прочной и не удалиться
+        :param durable: Если ``True`` очередь будет устойчивой, это достигается путем сохранения ей на диске.
         :param name: Имя очереди, если '' то у очереди будет случайное уникальное имя
         :param bind: Связать очередь с точкой обмена -  {"ExchangeName": ("КлючевыеПути", ... ) ... }
         :param exclusive: Очередь будет удалена при закрытии соединения.
