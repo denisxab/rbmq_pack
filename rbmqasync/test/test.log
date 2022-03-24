@@ -1,0 +1,615 @@
+[INFO][START]:----------2022-03-09 00:14:01.967848----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-iVkN7B1qjx18wZm_M2m_sQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-fmGUlNf50zpqEqwO6j1o_A'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-iVkN7B1qjx18wZm_M2m_sQ':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-fmGUlNf50zpqEqwO6j1o_A':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-iVkN7B1qjx18wZm_M2m_sQ':_rk='pip'
+[INFO][START]:----------2022-03-09 00:14:48.877564----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-cmEbrLvwP6N4wdECiUREQg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-cmEbrLvwP6N4wdECiUREQg':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-8YU1RtnHMYf5q0iE3TCKDg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-8YU1RtnHMYf5q0iE3TCKDg':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-8YU1RtnHMYf5q0iE3TCKDg':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][START]:----------2022-03-09 00:15:01.026357----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-_e03FgIcx0VO3VXvgZDcYw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-_e03FgIcx0VO3VXvgZDcYw':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wgWoeTtds707mV7eMHVbEw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wgWoeTtds707mV7eMHVbEw':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wgWoeTtds707mV7eMHVbEw':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][START]:----------2022-03-09 00:15:29.803692----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-IyY7YCBrXOFYnVrRulSNXA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-IyY7YCBrXOFYnVrRulSNXA':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-9sz4De7pNCbW-wvcyVgQwg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-9sz4De7pNCbW-wvcyVgQwg':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-9sz4De7pNCbW-wvcyVgQwg':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][START]:----------2022-03-09 00:15:38.780638----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-BuqqDN2yGkSMf0OdKX74YA'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-j1k7MLxsNv5Ik_pclOUhSA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-j1k7MLxsNv5Ik_pclOUhSA':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-BuqqDN2yGkSMf0OdKX74YA':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-BuqqDN2yGkSMf0OdKX74YA':_rk='pip'
+[INFO][START]:----------2022-03-09 00:15:56.568446----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-EPFrsYSg-0EKV8x5ZhW0lA'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-80nrsVNsvjXa2tU5ChF62g'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-80nrsVNsvjXa2tU5ChF62g':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-EPFrsYSg-0EKV8x5ZhW0lA':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-EPFrsYSg-0EKV8x5ZhW0lA':_rk='pip'
+[INFO][START]:----------2022-03-09 00:16:24.121761----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wQLr-QAVmZRD1LVJs24udQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-JP_65J-NoEhPWcXIyx-GQw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wQLr-QAVmZRD1LVJs24udQ':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-JP_65J-NoEhPWcXIyx-GQw':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wQLr-QAVmZRD1LVJs24udQ':_rk='pip'
+[INFO][START]:----------2022-03-09 00:16:27.657221----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-XepO_G0Jej44tIZIfL94Uw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-dX9fIG2mJa3zg-NspCqJvQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-dX9fIG2mJa3zg-NspCqJvQ':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-XepO_G0Jej44tIZIfL94Uw':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-XepO_G0Jej44tIZIfL94Uw':_rk='pip'
+[INFO][START]:----------2022-03-09 00:16:31.978027----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-xK_IV48oMeBDilruxiZ56A'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-hGJFXQdte-dlD6GYhP_lzQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-hGJFXQdte-dlD6GYhP_lzQ':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-xK_IV48oMeBDilruxiZ56A':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-hGJFXQdte-dlD6GYhP_lzQ':_rk='pip'
+[INFO][START]:----------2022-03-09 00:16:35.054687----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='anyn2':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-ZE1B7JPRGFfrqFGC_KQEJA'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-F2fimvvGEkWD5J6FFISomQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-ZE1B7JPRGFfrqFGC_KQEJA':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-F2fimvvGEkWD5J6FFISomQ':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-F2fimvvGEkWD5J6FFISomQ':_rk='pip'
+[INFO][START]:----------2022-03-09 00:24:50.561432----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-aJdrzahY-7hRycPATCM2xQ'
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-QLEN7L8xPfVDgbxmPitwZw'
+[INFO][START]:----------2022-03-09 00:25:00.445177----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-azGGgzQ8q49_JlN-XLS03Q'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-ko_rJHvfqSWVzECORXsk5w'
+[INFO][START]:----------2022-03-09 00:25:07.338106----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][START]:----------2022-03-09 00:25:16.418383----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][START]:----------2022-03-09 00:27:31.904519----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-pGwdrT5ACjJuPoTtT58W_A'
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-vzzaA6X41gzAGZaifpWheg'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][START]:----------2022-03-09 00:44:19.246098----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-GVtNqUfqY2pt1u9dolALrQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-LGbEiBRZbXUdtdisA3O5Wg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-GVtNqUfqY2pt1u9dolALrQ':_rk=None
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-LGbEiBRZbXUdtdisA3O5Wg':_rk=None
+[INFO][START]:----------2022-03-09 00:44:54.795428----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-x_sj1V_5d7N1a07uTICgrA'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-UdRHNUwrnIUy0ArEGvt0Zg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-UdRHNUwrnIUy0ArEGvt0Zg':_rk=None
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-x_sj1V_5d7N1a07uTICgrA':_rk=None
+[INFO][START]:----------2022-03-09 00:45:12.964257----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Ts1sCSU98LV-5DORNPgupQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-rJLgE1qE2jN5ZMHuiaNBCw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-Ts1sCSU98LV-5DORNPgupQ':_rk=None
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-rJLgE1qE2jN5ZMHuiaNBCw':_rk=None
+[INFO][START]:----------2022-03-09 00:45:23.656817----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-_cVmZW3nw1srVED3Mi9N6w'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-1iTl0H2jaRURqKrsi2VnZQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-1iTl0H2jaRURqKrsi2VnZQ':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-_cVmZW3nw1srVED3Mi9N6w':_rk=''
+[INFO][START]:----------2022-03-09 00:45:32.757265----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-VFe12SbsU9obYMHIYazgQA'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-VFe12SbsU9obYMHIYazgQA':_rk=''
+[INFO][CREATE_EXCHANGE]:exchange='exchange':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-rkZdaqO53Cal8EslesoTTA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-rkZdaqO53Cal8EslesoTTA':_rk=''
+[INFO][START]:----------2022-03-09 00:45:35.821501----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-6lR3YsJlVaULfTWa3eMvuQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-J40Tn5Noz08KfA9TRVlO8g'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-6lR3YsJlVaULfTWa3eMvuQ':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-J40Tn5Noz08KfA9TRVlO8g':_rk=''
+[INFO][START]:----------2022-03-09 00:45:39.684738----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-HlAXwgaGV1-vz0y0dQddlQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-6SQSUQ2YG5htPs6pIwqOyA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-HlAXwgaGV1-vz0y0dQddlQ':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-6SQSUQ2YG5htPs6pIwqOyA':_rk=''
+[INFO][START]:----------2022-03-09 00:45:42.572131----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='test':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-5N5VMnAmwpvsRkq4hmS7pw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-W95RSPOvp_upAncnfMxdhw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-5N5VMnAmwpvsRkq4hmS7pw':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-W95RSPOvp_upAncnfMxdhw':_rk=''
+[INFO][START]:----------2022-03-09 00:47:15.732382----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-tCnu8IJ2d8ffAQZ2zw7qaw'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][START]:----------2022-03-09 00:47:31.298753----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-HkWhVv2NbuAqJZVmowh-sQ'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][START]:----------2022-03-09 00:47:40.309415----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='test1'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-cvznUXVcX0S40Sc6aRm_zQ'
+[INFO][CREATE_QUEUE]:queue_name='test1'
+[INFO][START]:----------2022-03-09 00:47:53.712171----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][START]:----------2022-03-09 00:48:02.228752----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][START]:----------2022-03-09 00:51:42.458510----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-LyryQUBTIMGVJR0wQnfWjA'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][START]:----------2022-03-09 00:52:18.992425----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-PnXSvZjxMR-1pc0LNVffYw'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][START]:----------2022-03-09 00:52:27.589726----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-3AZkUgGpjfrHjAHv220h9A'
+[INFO][CREATE_QUEUE]:queue_name='test'
+[INFO][START]:----------2022-03-09 00:53:06.007711----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-H9_-KR-m4k4xWmEDExE5UA'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-H9_-KR-m4k4xWmEDExE5UA':_rk=''
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-4C4tL84fi0Qb1ZLMhZv8Kw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-4C4tL84fi0Qb1ZLMhZv8Kw':_rk=''
+[INFO][START]:----------2022-03-09 00:53:21.831162----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-8VCo_0rTBD9U9xVWUarkSA'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-UAfhnaYidVgPwvYT8RLdMA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-8VCo_0rTBD9U9xVWUarkSA':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-UAfhnaYidVgPwvYT8RLdMA':_rk=''
+[INFO][START]:----------2022-03-09 00:53:38.375229----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-B-2bBwyaStJAQvIKDPIr7A'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-jG1k0p6WOE0xZ5Cts7tV5A'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-jG1k0p6WOE0xZ5Cts7tV5A':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-B-2bBwyaStJAQvIKDPIr7A':_rk=''
+[INFO][START]:----------2022-03-09 00:53:51.497999----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Lns60Zy1LUUbQj8NPsCgLw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-Lns60Zy1LUUbQj8NPsCgLw':_rk=''
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-DCaoa9VJsTx42nt17tk3ZA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-DCaoa9VJsTx42nt17tk3ZA':_rk=''
+[INFO][START]:----------2022-03-09 00:54:19.269650----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-DH-WthchjqhCokplWvzvLw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-bLrlMPGnDhTPDRiSMnqxZQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-bLrlMPGnDhTPDRiSMnqxZQ':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-DH-WthchjqhCokplWvzvLw':_rk=''
+[INFO][START]:----------2022-03-09 00:55:22.346050----------
+[INFO][START]:----------2022-03-09 00:55:31.804754----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-X2ZVmwcFYcWcSujGB8uofw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Dt_dbRAkzg__PjQW_yzhCA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-Dt_dbRAkzg__PjQW_yzhCA':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-X2ZVmwcFYcWcSujGB8uofw':_rk=''
+[INFO][START]:----------2022-03-09 00:55:41.429277----------
+[INFO][START]:----------2022-03-09 00:56:02.047114----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-2JxPvFNuHTI_iB2Wa_j2xw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Dil37vh4-QVcaAUa9Ky-Ng'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-Dil37vh4-QVcaAUa9Ky-Ng':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-2JxPvFNuHTI_iB2Wa_j2xw':_rk=''
+[INFO][START]:----------2022-03-09 00:56:11.030156----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-fxjVJXRhV6ovjS4f-aqpjw'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-fxjVJXRhV6ovjS4f-aqpjw':_rk=''
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wju_6XWVxP5gWY5k_YhB4Q'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wju_6XWVxP5gWY5k_YhB4Q':_rk=''
+[INFO][START]:----------2022-03-09 00:56:19.152932----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-SulpXfIjEkq5ENYvqSmAZQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-SulpXfIjEkq5ENYvqSmAZQ':_rk=''
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-zpG75G6tBKkugUGk8lqnjw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-zpG75G6tBKkugUGk8lqnjw':_rk=''
+[INFO][START]:----------2022-03-09 00:57:21.223691----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-CzuWxT3NmdK-pF6OTCQOyQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 00:57:29.735722----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-t9lv9kziGAha_Yx8qFx9tQ'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-x8Pa_1wEYGylUNA6u66lqg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-x8Pa_1wEYGylUNA6u66lqg':_rk=''
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-t9lv9kziGAha_Yx8qFx9tQ':_rk=''
+[INFO][START]:----------2022-03-09 00:57:35.975109----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-QqJHV4n0OEvoeSLNZj0GPg'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-uKKsKii2uFacP-Z4ejK8vg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-uKKsKii2uFacP-Z4ejK8vg':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-QqJHV4n0OEvoeSLNZj0GPg':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-QqJHV4n0OEvoeSLNZj0GPg':_rk='pip'
+[INFO][START]:----------2022-03-09 00:57:39.574723----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-UzlWejAsHo07i6KeREeR1A'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-kA-Cay6E76FVRKNpfbVGLQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-UzlWejAsHo07i6KeREeR1A':_rk='*.git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-kA-Cay6E76FVRKNpfbVGLQ':_rk='user.#'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][START]:----------2022-03-09 00:57:42.795717----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-QdUXr4twKTfFdh47pQfQRQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 00:58:26.652530----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-naxgSpvg-dL_3wjfTDIHqA'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 00:58:43.896199----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-v0iLNUsZNpDc1k8n5SiyTw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 00:59:35.317416----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wJyrmcY7bYjE3YbPMA0BnQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 00:59:55.034199----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Tv17kU0RK-yjMr1d39MFug'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:01:52.066981----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Htv6fKKyj2cRGWCzrTZYfg'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:01:57.129854----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-X70FLyu8KXZZmmbGck9qEQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:03:29.429318----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-6vZrGaa1SKJDwU-D4GZsvg'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:03:35.387342----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-YEBVy3xALfen3nLknS2skg'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:05:13.764783----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-qsExvyF_BSaa9mUAwiP7fA'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:06:04.704854----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-sga0HCzu6dVckfWYSyQgww'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:06:08.592320----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-4tx1xZpLKCqxcwvHgysZmQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:06:35.453398----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-JMkPpo--h9HrGnd06xcMbA'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][START]:----------2022-03-09 01:07:03.854157----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-AMUNWgVsP_01D6o_KCe8Sw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-C86xuvWlttAvLgDkWmfFAA'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-C86xuvWlttAvLgDkWmfFAA':_rk='*.git'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-eFEp78TvW0vyvScu2oGSmg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-eFEp78TvW0vyvScu2oGSmg':_rk='user.#'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-YrAQG6Nlu_gkDNP7jFtVyg'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Sy7E26FZ4sbv9o7Ww8owfA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-Sy7E26FZ4sbv9o7Ww8owfA':_rk='pip'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-YrAQG6Nlu_gkDNP7jFtVyg':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-YrAQG6Nlu_gkDNP7jFtVyg':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wzTH3pDtOPZCc8Gffk9ibg'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wzTH3pDtOPZCc8Gffk9ibg':_rk=''
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-5moeAWRHADXfQGgbkyvUOw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-5moeAWRHADXfQGgbkyvUOw':_rk=''
+[INFO][START]:----------2022-03-09 01:07:25.407028----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-Ezbxh5CKEiHq2tZQ0Pl6Og'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-IQ5X7P7l1NRXzXjRpMVrVg'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-rKGTx8Lgc5VeJNwV-OgfiQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-IQ5X7P7l1NRXzXjRpMVrVg':_rk='*.git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-rKGTx8Lgc5VeJNwV-OgfiQ':_rk='user.#'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-N9RShfeWy15n6GQZepVOTQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-N9RShfeWy15n6GQZepVOTQ':_rk='pip'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-w8al-ISmeqBdlHp53pamxw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-w8al-ISmeqBdlHp53pamxw':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-w8al-ISmeqBdlHp53pamxw':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-3AL3d6OHFvnBLDUP-vXdrQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-3AL3d6OHFvnBLDUP-vXdrQ':_rk=''
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-wITCbpSn0k_xMZEjXFcK2Q'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-wITCbpSn0k_xMZEjXFcK2Q':_rk=''
+[INFO][START]:----------2022-03-09 01:16:45.660167----------
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-FGWIMS3e1sSN_bkNEtgTYQ'
+[INFO][CREATE_QUEUE]:queue_name='testw'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-kHIbhx08fj_fd9EIzfQpmA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-kHIbhx08fj_fd9EIzfQpmA':_rk='user.#'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.topic: 'topic'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-jh_3UD1X1d7Wfw9Xs8NMCQ'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-jh_3UD1X1d7Wfw9Xs8NMCQ':_rk='*.git'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-gi6jPUahHAchrM7Y-vwRxw'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-gi6jPUahHAchrM7Y-vwRxw':_rk='pip'
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.direct: 'direct'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-m69EU809VJPyAJe_TEShsA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-m69EU809VJPyAJe_TEShsA':_rk='git'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-m69EU809VJPyAJe_TEShsA':_rk='pip'
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_CHANEL]:channel_number=1
+[INFO][CREATE_EXCHANGE]:exchange='testw':exchange_type=<ExchangeType.fanout: 'fanout'>
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-btn0yphTE7fZ2OaVrnFJ0g'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-btn0yphTE7fZ2OaVrnFJ0g':_rk=''
+[INFO][CREATE_QUEUE]:queue_name='amq.gen-yp6HpFS0bfcFiWIUN9zvUA'
+[INFO][CREATE_ROUTE]:queue_name='amq.gen-yp6HpFS0bfcFiWIUN9zvUA':_rk=''

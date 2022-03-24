@@ -1,0 +1,54 @@
+# Версия docker-compose
+version: "3"
+
+# Список контейнеров
+services:
+
+#  # Контейнер с базой данных
+#  db:
+#
+#    # Зеркальная папка с БД
+#    # Если вы хотите использовать данные из реальной БД(которая вне контейнера)
+#    # То установите путь
+#    volumes:
+#      - "${POSTGRES_VOLUMES}:/var/lib/postgresql/data"
+#
+#    # Имя контейнера
+#    container_name: ${POSTGRES_CONTAINER_NAME}
+#
+#    # Найти Dockerfile(по указанному пути) и собрать контейнер
+#    build:
+#      context: ./postgres
+#      # Передать аргумент с путем к рабочей деректории
+#      args:
+#        POSTGRES_DB: ${POSTGRES_DB}
+#        POSTGRES_USER: ${POSTGRES_USER}
+#        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#
+#    # Перезапускать контейнер если он упал
+#    restart: always
+#
+#    # Взять переменные окружения
+#    env_file: ${PATH_ENV}
+
+  rabbitmq:
+    # http://172.18.0.3:15672/
+
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ${RABBITMQ_VOLUMES}:/var/lib/rabbitmq'
+
+#    depends_on:
+#      - db
+
+    # Имя контейнера
+    container_name: ${RABBITMQ_CONTAINER_NAME}
+
+    # Взять переменные окружения
+    env_file: ${PATH_ENV}
+
+    # Перезапускать контейнер если он упал
+    restart: always
