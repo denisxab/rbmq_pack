@@ -34,32 +34,33 @@ RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBIT
     bind={client_exchange: ('',)}
 )
 async def server(rabbitmq: RabbitmqAsync):
+    async def get_message(message: AbstractIncomingMessage):
+        # Если сообщение некуда возвращать, то игнорируем его
+        if message.reply_to is not None:
+            # Обрабатываем полученное сообщение
+            async with message.process():
+                data = json.loads(message.body.decode())
+                logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
+
+                # Работаем
+                response = str(eval(data['data']))
+
+                # Отправляем ответ
+                await rabbitmq.exchange[0].publish(
+                    Message(
+                        body=response.encode(),
+                        correlation_id=message.correlation_id,
+                    ),
+                    routing_key=message.reply_to,
+                )
+                logger.success(message.reply_to, 'SEND MESSAGE')
+        else:
+            logger.error(f"{message.reply_to=}", "REPLAY TO")
+
     logger.info("Start", 'SERVER')
-    async with rabbitmq.queue[0].iterator() as qiterator:
-        message: AbstractIncomingMessage
-        logger.info('!#!@#!#')
-        async for message in qiterator:
-            # Если сообщение некуда возвращать, то игнорируем его
-            if message.reply_to is not None:
-                # Обрабатываем полученное сообщение
-                async with message.process():
-                    data = json.loads(message.body.decode())
-                    logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
-
-                    # Работаем
-                    response = str(eval(data['data']))
-
-                    # Отправляем ответ
-                    await rabbitmq.exchange[0].publish(
-                        Message(
-                            body=response.encode(),
-                            correlation_id=message.correlation_id,
-                        ),
-                        routing_key=message.reply_to,
-                    )
-                    logger.success(message.reply_to, 'SEND MESSAGE')
-            else:
-                logger.error(f"{message.reply_to=}", "REPLAY TO")
+    # Ожидаем сообщений, как только получим его то, выловится функцию
+    await rabbitmq.queue[0].consume(get_message)
+    await asyncio.Future()
 
 
 if __name__ == '__main__':

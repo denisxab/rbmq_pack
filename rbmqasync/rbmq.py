@@ -370,3 +370,6 @@ class UtilitiesRabbitmq:
             rabbitmq.queue[index].unbind(exchange=exchange_name, routing_key=routing_key)
 
         _self()
+
+
+
