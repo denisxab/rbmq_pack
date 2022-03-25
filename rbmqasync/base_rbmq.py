@@ -9,6 +9,9 @@ from aio_pika.abc import AbstractRobustExchange, AbstractRobustQueue, AbstractIn
 from logsmal import logger
 
 logger.rabbitmq_info = logger.info
+logger.rabbitmq_info.title_logger = "RBMQ INFO"
+logger.rabbitmq_success = logger.success
+logger.rabbitmq_success.title_logger = "RBMQ SUCCESS"
 
 
 class RabbitmqAsync:
@@ -100,7 +103,7 @@ class RabbitmqAsync:
         """
         message: bytes = message.encode("utf-8")
         for _r in routing_key:
-            logger.success(f"{message=}|{exchange_index=}|{routing_key=}", "SEND_MESSAGE")
+            logger.rabbitmq_success (f"{message=}|{exchange_index=}|{routing_key=}", "SEND_MESSAGE")
             await self.exchange[exchange_index].publish(
                 message=Message(
                     body=message,
@@ -121,7 +124,7 @@ class RabbitmqAsync:
         :param queue_index: Имя очереди
         :param callback_: Функция вызовется при получении сообщения
         """
-        logger.info(f"{queue_index=}|{self.queue[queue_index]}", "CONSUME")
+        logger.rabbitmq_info(f"{queue_index=}|{self.queue[queue_index]}", "CONSUME")
 
         await self.queue[queue_index].consume(callback=callback_,
                                               # Отключить авто подтверждение получения сообщения
@@ -136,7 +139,7 @@ class RabbitmqAsync:
         """
         async with message.process():
             message_str = message.body.decode('utf-8')
-            logger.success(f"{message.message_id}|{message_str}", "GET_MESSAGE")
+            logger.rabbitmq_success (f"{message.message_id}|{message_str}", "GET_MESSAGE")
 
     @staticmethod
     def Connect(
@@ -370,6 +373,3 @@ class UtilitiesRabbitmq:
             rabbitmq.queue[index].unbind(exchange=exchange_name, routing_key=routing_key)
 
         _self()
-
-
-

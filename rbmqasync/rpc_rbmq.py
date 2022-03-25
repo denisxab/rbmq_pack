@@ -5,9 +5,8 @@ from uuid import uuid4
 
 from aio_pika import ExchangeType, Message
 from aio_pika.abc import AbstractIncomingMessage
-from logsmal import logger
 
-from rbmqasync.rbmq import RabbitmqAsync
+from rbmqasync.base_rbmq import RabbitmqAsync, logger
 
 
 class CallbackGetMessage(Protocol):
@@ -72,10 +71,10 @@ def RPCClient(
     )
     async def client_front(publish: CallbackPublish):
         async def pr1(message: Message):
-            logger.info(message.body, 'Web Js 1')
+            logger.rabbitmq_info (message.body, 'Web Js 1')
 
         async def pr2(message: Message):
-            logger.info(message.body, 'Web Js 2')
+            logger.rabbitmq_info (message.body, 'Web Js 2')
 
         # Отправляем сообщение, и функцию которая вызовется когда мы полуем ответ на это сообщение
         await publish({'time': str(datetime.now()), 'data': '5+5'}, pr1)
@@ -117,7 +116,7 @@ def RPCClient(
                     if message.correlation_id is not None:
                         # Обрабатываем полученное сообщение, подтверждения будет поле выхода из контекста
                         async with message.process():
-                            logger.success(f"{message.correlation_id=}", "GET_MESSAGE")
+                            logger.rabbitmq_success (f"{message.correlation_id=}", "GET_MESSAGE")
                             # Вызываем функцию с таким id сообщения
                             await dict_callback[message.correlation_id](message)
                     else:
@@ -143,11 +142,11 @@ def RPCClient(
                         # Так как тип ``FANOUT`` нам неважен путь, он все равно про игнорируется.
                         routing_key='',
                     )
-                    logger.success(f"{message_id=}|{message=}", "SEND MESSAGE")
+                    logger.rabbitmq_success (f"{message_id=}|{message=}", "SEND MESSAGE")
 
                 # Ожидаем сообщений, как только получим его то, выловится функцию
                 await rabbitmq.queue[0].consume(_get_message)
-                logger.info("Start Consume", "CLIENT")
+                logger.rabbitmq_info("Start Consume", "CLIENT")
                 # Вызываем функцию
                 await func(*args, publish=_publish, **kwargs)
                 # Запускаем вечный цикл
@@ -229,7 +228,7 @@ def RPCServer(
                         async with message.process():
                             # Десиреализуем данные
                             data = loads(message.body.decode())
-                            logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
+                            logger.rabbitmq_success (f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
                             # Выполняем полезную нагрузку
                             response: str = await func(data)
                             # Отправляем ответ
@@ -240,11 +239,11 @@ def RPCServer(
                                 ),
                                 routing_key=message.reply_to,
                             )
-                            logger.success(message.reply_to, 'SEND MESSAGE')
+                            logger.rabbitmq_success (message.reply_to, 'SEND MESSAGE')
                     else:
                         logger.error(f"{message.reply_to=}", "REPLAY TO")
 
-                logger.info("Start", 'SERVER')
+                logger.rabbitmq_info("Start", 'SERVER')
                 # Ожидаем сообщений, как только получим его то, выловится функцию
                 await rabbitmq.queue[0].consume(_get_message)
                 # Вечный цикл

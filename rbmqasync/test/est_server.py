@@ -8,7 +8,7 @@ from helpful import readAndSetEnv
 
 readAndSetEnv("./devops/__env.env")
 
-from rbmqasync.client_server import RPCServer
+from rbmqasync.rpc_rbmq import RPCServer
 
 RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBITMQ_DEFAULT_PASS']}@{environ['RABBITMQ_IP']}{environ['RABBITMQ_DEFAULT_VHOST']}"
 
