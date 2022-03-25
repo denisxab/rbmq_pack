@@ -1,5 +1,5 @@
 import asyncio
-import random
+from random import randint
 from datetime import datetime
 from os import environ
 
@@ -27,8 +27,8 @@ async def client_front(publish: CallbackPublish) -> None:
     async def pr2(message: Message):
         logger.info(message.body, 'Web Js 2')
 
-    await publish({'time': str(datetime.now()), 'data': f'{random.randint(0, 10)}+100'}, pr1)
-    await publish({'time': str(datetime.now()), 'data': f'{random.randint(0, 10)}+10'}, pr2)
+    await publish({'time': str(datetime.now()), 'data': f'{randint(0, 10)}+100'}, pr1)
+    await publish({'time': str(datetime.now()), 'data': f'{randint(0, 10)}+10'}, pr2)
 
 
 if __name__ == '__main__':

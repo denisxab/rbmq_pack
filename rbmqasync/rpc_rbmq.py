@@ -9,43 +9,6 @@ from aio_pika.abc import AbstractIncomingMessage
 from rbmqasync.base_rbmq import RabbitmqAsync, logger
 
 
-class CallbackGetMessage(Protocol):
-    async def __call__(self, message: Message) -> None:
-        """
-        Эта функция вызывается в ``async with message.process(): ...``
-
-        :param message: aio_pika.Message
-        """
-        ...
-
-
-class CallbackRPCServer(Protocol):
-    async def __call__(self, data: Union[object, dict, list]) -> str:
-        """
-        Тип для оборачиваемой функции RPCServe
-        """
-        ...
-
-
-class CallbackPublish(Protocol):
-    async def __call__(self, message_json: object, callback_get_message: CallbackGetMessage) -> None:
-        """
-        функция для отправки данных на сервер
-
-        :param message_json: Объект сериализуемый в JSON
-        :param callback_get_message: Функция которая вызовется при получение ответа на это сообщение
-        """
-        ...
-
-
-class CallbackRPCClient(Protocol):
-    async def __call__(self, publish: CallbackPublish) -> None:
-        """
-        Тип для оборачиваемой функции RPCClient
-        """
-        ...
-
-
 def RPCClient(
         server_exchange: str,
         client_exchange: str,
@@ -258,3 +221,40 @@ def RPCServer(
         return wraper
 
     return innser
+
+
+class CallbackGetMessage(Protocol):
+    async def __call__(self, message: Message) -> None:
+        """
+        Эта функция вызывается в ``async with message.process(): ...``
+
+        :param message: aio_pika.Message
+        """
+        ...
+
+
+class CallbackRPCServer(Protocol):
+    async def __call__(self, data: Union[object, dict, list]) -> str:
+        """
+        Тип для оборачиваемой функции RPCServe
+        """
+        ...
+
+
+class CallbackPublish(Protocol):
+    async def __call__(self, message_json: object, callback_get_message: CallbackGetMessage) -> None:
+        """
+        функция для отправки данных на сервер
+
+        :param message_json: Объект сериализуемый в JSON
+        :param callback_get_message: Функция которая вызовется при получение ответа на это сообщение
+        """
+        ...
+
+
+class CallbackRPCClient(Protocol):
+    async def __call__(self, publish: CallbackPublish) -> None:
+        """
+        Тип для оборачиваемой функции RPCClient
+        """
+        ...

@@ -103,7 +103,7 @@ class RabbitmqAsync:
         """
         message: bytes = message.encode("utf-8")
         for _r in routing_key:
-            logger.rabbitmq_success (f"{message=}|{exchange_index=}|{routing_key=}", "SEND_MESSAGE")
+            logger.rabbitmq_success(f"{message=}|{exchange_index=}|{routing_key=}", "SEND_MESSAGE")
             await self.exchange[exchange_index].publish(
                 message=Message(
                     body=message,
@@ -139,7 +139,7 @@ class RabbitmqAsync:
         """
         async with message.process():
             message_str = message.body.decode('utf-8')
-            logger.rabbitmq_success (f"{message.message_id}|{message_str}", "GET_MESSAGE")
+            logger.rabbitmq_success(f"{message.message_id}|{message_str}", "GET_MESSAGE")
 
     @staticmethod
     def Connect(
@@ -362,10 +362,13 @@ class UtilitiesRabbitmq:
         _self()
 
     @staticmethod
-    def queue_unbind(index: int, exchange_name: str, *,
-                     url: str,
-                     routing_key: str = None,
-                     channel_number: int = 1):
+    def queue_unbind(
+            index: int,
+            exchange_name: str, *,
+            url: str,
+            routing_key: str = None,
+            channel_number: int = 1
+    ):
         """Отвязать очередь от точки обмена"""
 
         @RabbitmqAsync.Connect(url=url, channel_number=channel_number)

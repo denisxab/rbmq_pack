@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from helpful import readAndSetEnv
 
 readAndSetEnv("./devops/__env.env")
-from rbmqasync.rbmq import RabbitmqAsync
+from rbmqasync.base_rbmq import RabbitmqAsync
 
 RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBITMQ_DEFAULT_PASS']}@{environ['RABBITMQ_IP']}{environ['RABBITMQ_DEFAULT_VHOST']}"
 
