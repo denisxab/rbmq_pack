@@ -8,54 +8,49 @@ from aio_pika import ExchangeType, Message
 from aio_pika.abc import AbstractIncomingMessage
 from logsmal import logger
 
+from rbmqasync.test.consume import server_exchange, client_exchange
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from helpful import readAndSetEnv
 
 readAndSetEnv("./devops/__env.env")
 from rbmqasync.rbmq import RabbitmqAsync
 
-exchange_name = 'test_exchange'
 RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBITMQ_DEFAULT_PASS']}@{environ['RABBITMQ_IP']}{environ['RABBITMQ_DEFAULT_VHOST']}"
 
 
 @RabbitmqAsync.Connect(RABBITMQ_URL)
-@RabbitmqAsync.Exchange(name='server_exchange', type_=ExchangeType.FANOUT)
-@RabbitmqAsync.Queue(name='get_server', exclusive=True, bind={'client_exchange': ("",)})
+@RabbitmqAsync.Exchange(
+    # Обменник для ответов серверов, будем использовать ``routing_key`` для направления ответа
+    # в нужную очередь клиента, поэтому используем тип ``DIRECT``.
+    name=server_exchange,
+    type_=ExchangeType.DIRECT
+)
+@RabbitmqAsync.Queue(
+    # Одна очередь для нескольких одинаковых серверов, которая ожидает сообщений от клиентов.
+    name='server_queue',
+    exclusive=True,
+    # Так как обменник у клиентов типа ``FANOUT``, то путь будет игнорироваться, поэтому он пустой.
+    bind={client_exchange: ('',)}
+)
 async def server(rabbitmq: RabbitmqAsync):
-    # async def get_message(message: AbstractIncomingMessage):
-    #     """
-    #     Получить сообщение
-    #     """
-    #     async with message.process(requeue=False):
-    #         message_str = message.body.decode('utf-8')
-    #         logger.success(f"{message.message_id}|{message_str}|{message.reply_to=}", "GET_MESSAGE")
-    #
-    #         response = input(":::")
-    #         await rabbitmq.exchange['server_exchange'].publish(
-    #             Message(
-    #                 body=response.encode(),
-    #                 correlation_id=message.correlation_id,
-    #             ),
-    #             routing_key=message.reply_to,
-    #         )
-    #         logger.success(f"{message.message_id}", "SEND_SERVER_MESSAGE")
-
     logger.info("Start", 'SERVER')
-    async with rabbitmq.queue['get_server'].iterator() as qiterator:
+    async with rabbitmq.queue[0].iterator() as qiterator:
         message: AbstractIncomingMessage
+        logger.info('!#!@#!#')
         async for message in qiterator:
             # Если сообщение некуда возвращать, то игнорируем его
             if message.reply_to is not None:
+                # Обрабатываем полученное сообщение
                 async with message.process():
-                    # Обрабатываем полученное сообщение
                     data = json.loads(message.body.decode())
-                    logger.success(data['data'], 'GET MESSAGE')
+                    logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
 
-                    # Вычитываем
+                    # Работаем
                     response = str(eval(data['data']))
 
                     # Отправляем ответ
-                    await rabbitmq.exchange['server_exchange'].publish(
+                    await rabbitmq.exchange[0].publish(
                         Message(
                             body=response.encode(),
                             correlation_id=message.correlation_id,

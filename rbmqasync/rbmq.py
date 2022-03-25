@@ -72,14 +72,14 @@ class RabbitmqAsync:
         #: Канал ``Rabbitmq``
         self.chanel: AbstractRobustChannel = chanel
         #: Точки обмена
-        self.exchange: dict[str, AbstractRobustExchange] = {} if exchange is None else exchange
+        self.exchange: list[AbstractRobustExchange] = [] if exchange is None else exchange
         #: Список очередей
-        self.queue: dict[str, AbstractRobustQueue] = {} if queue is None else queue
+        self.queue: list[AbstractRobustQueue] = [] if queue is None else queue
         #: Ключевые пути
         self.routing_key: dict[str, list[str]] = dict() if routing_key is None else routing_key
 
     async def publish(self,
-                      exchange_name: str,
+                      exchange_index: int,
                       routing_key: tuple[str, ...],
                       message: str, delivery_mode=None,
                       reply_to: str = None,
@@ -90,7 +90,7 @@ class RabbitmqAsync:
 
 
         :param correlation_id:
-        :param exchange_name: Имя точки обмена
+        :param exchange_index: Имя точки обмена
         :param routing_key: Ключевые пути
         :param message: Сообщение
         :param reply_to: Имя очереди в которую вернется ответ
@@ -100,8 +100,8 @@ class RabbitmqAsync:
         """
         message: bytes = message.encode("utf-8")
         for _r in routing_key:
-            logger.success(f"{message=}|{exchange_name=}|{routing_key=}", "SEND_MESSAGE")
-            await self.exchange[exchange_name].publish(
+            logger.success(f"{message=}|{exchange_index=}|{routing_key=}", "SEND_MESSAGE")
+            await self.exchange[exchange_index].publish(
                 message=Message(
                     body=message,
                     delivery_mode=delivery_mode,
@@ -114,18 +114,18 @@ class RabbitmqAsync:
     class CallbackConsume(Protocol):
         async def __call__(self, message: AbstractIncomingMessage, *args, **kwargs) -> Any: ...
 
-    async def start_consume(self, queue_name: str, callback_: CallbackConsume):
+    async def start_consume(self, queue_index: int, callback_: CallbackConsume):
         """
         Ожидать сообщения в бесконечном цикле
 
-        :param queue_name: Имя очереди
+        :param queue_index: Имя очереди
         :param callback_: Функция вызовется при получении сообщения
         """
-        logger.info(f"{queue_name=}|{self.queue[queue_name]}", "CONSUME")
+        logger.info(f"{queue_index=}|{self.queue[queue_index]}", "CONSUME")
 
-        await self.queue[queue_name].consume(callback=callback_,
-                                             # Отключить авто подтверждение получения сообщения
-                                             no_ack=False)
+        await self.queue[queue_index].consume(callback=callback_,
+                                              # Отключить авто подтверждение получения сообщения
+                                              no_ack=False)
         # Вечный цикл
         await Future()
 
@@ -150,6 +150,8 @@ class RabbitmqAsync:
         """
         Декоратор для подключения к ``Rabbitmq``
 
+        :param ssl_options:
+        :param ssl:
         :param url: Url для подключения к Rabbitmq.
         :param prefetch_count: Максимальное количество сообщений в очереди
         :param prefetch_size: Максимальный размер очереди
@@ -246,7 +248,7 @@ class RabbitmqAsync:
     @staticmethod
     def Exchange(
             name: str = '',
-            type_: ExchangeType = ExchangeType.FANOUT
+            type_: ExchangeType = ExchangeType.DIRECT
     ):
         """
         Подключиться к точке обмена
@@ -270,7 +272,7 @@ class RabbitmqAsync:
         def inner(func: Callable):
             async def warp(*args, rabbitmq: RabbitmqAsync, **kwargs):
                 #: Подключиться к точке обмена
-                rabbitmq.exchange[name] = await rabbitmq.chanel.declare_exchange(name=name, type=type_.value)
+                rabbitmq.exchange.append(await rabbitmq.chanel.declare_exchange(name=name, type=type_.value))
                 logger.rabbitmq_info(f"{name=}:{type_=}", flag='CREATE_EXCHANGE')
                 await func(*args, rabbitmq=rabbitmq, **kwargs)
 
@@ -323,7 +325,7 @@ class RabbitmqAsync:
                             rabbitmq.routing_key[_exchange].append(_routing_k)
                             logger.rabbitmq_info(f"{_exchange=}:{_routing_k=}:", flag="CREATE_ROUTE")
 
-                rabbitmq.queue[name if name else str(len(rabbitmq.queue))] = queue_obj
+                rabbitmq.queue.append(queue_obj)
                 await func(*args, rabbitmq=rabbitmq, **kwargs)
 
             return warp
@@ -357,7 +359,7 @@ class UtilitiesRabbitmq:
         _self()
 
     @staticmethod
-    def queue_unbind(queue_name: str, exchange_name: str, *,
+    def queue_unbind(index: int, exchange_name: str, *,
                      url: str,
                      routing_key: str = None,
                      channel_number: int = 1):
@@ -365,6 +367,6 @@ class UtilitiesRabbitmq:
 
         @RabbitmqAsync.Connect(url=url, channel_number=channel_number)
         def _self(rabbitmq: RabbitmqAsync):
-            rabbitmq.queue[queue_name].unbind(exchange=exchange_name, routing_key=routing_key)
+            rabbitmq.queue[index].unbind(exchange=exchange_name, routing_key=routing_key)
 
         _self()
