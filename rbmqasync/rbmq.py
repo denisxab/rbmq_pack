@@ -78,29 +78,43 @@ class RabbitmqAsync:
         #: Ключевые пути
         self.routing_key: dict[str, list[str]] = dict() if routing_key is None else routing_key
 
-    async def publish(self, exchange_name: str, routing_key: tuple[str, ...], message: str, delivery_mode=None):
+    async def publish(self,
+                      exchange_name: str,
+                      routing_key: tuple[str, ...],
+                      message: str, delivery_mode=None,
+                      reply_to: str = None,
+                      correlation_id: str = None
+                      ):
         """
         Отправить сообщение в точку обмена
 
 
+        :param correlation_id:
         :param exchange_name: Имя точки обмена
         :param routing_key: Ключевые пути
         :param message: Сообщение
-
+        :param reply_to: Имя очереди в которую вернется ответ
         :param delivery_mode:
 
             - DeliveryMode.PERSISTENT - Сохранить сообщение на диске
         """
-        message = message.encode("utf-8")
+        message: bytes = message.encode("utf-8")
         for _r in routing_key:
             logger.success(f"{message=}|{exchange_name=}|{routing_key=}", "SEND_MESSAGE")
-            await self.exchange[exchange_name].publish(Message(
-                body=message, delivery_mode=delivery_mode), routing_key=_r)
+            await self.exchange[exchange_name].publish(
+                message=Message(
+                    body=message,
+                    delivery_mode=delivery_mode,
+                    reply_to=reply_to,
+                    correlation_id=correlation_id,
+                ),
+                routing_key=_r
+            )
 
     class CallbackConsume(Protocol):
         async def __call__(self, message: AbstractIncomingMessage, *args, **kwargs) -> Any: ...
 
-    async def consume(self, queue_name: str, callback_: CallbackConsume):
+    async def start_consume(self, queue_name: str, callback_: CallbackConsume):
         """
         Ожидать сообщения в бесконечном цикле
 
@@ -130,6 +144,8 @@ class RabbitmqAsync:
             channel_number: int = 1,
             prefetch_count: int = 0,
             prefetch_size: int = 0,
+            ssl=False,
+            ssl_options=None,
     ):
         """
         Декоратор для подключения к ``Rabbitmq``
@@ -149,7 +165,7 @@ class RabbitmqAsync:
         def inner(func: Callable):
             async def warp(*arg, **kwargs):
                 # Подключиться к ``Rabbitmq``
-                connection = await connect_robust(url)
+                connection = await connect_robust(url, ssl=ssl, ssl_options=ssl_options)
                 # Подключиться к каналу
                 async with connection:
                     rabbitmq: RabbitmqAsync = RabbitmqAsync(
@@ -173,6 +189,55 @@ class RabbitmqAsync:
                         # Имя очереди
                         **kwargs
                     )
+
+            return warp
+
+        return inner
+
+    @staticmethod
+    def ConnectTransactions(
+            url: str,
+            channel_number: int = 1,
+            prefetch_count: int = 0,
+            prefetch_size: int = 0,
+    ):
+        """
+        https://aio-pika.readthedocs.io/en/latest/quick-start.html#working-with-rabbitmq-transactions
+
+        :param url:
+        :param channel_number:
+        :param prefetch_count:
+        :param prefetch_size:
+        :return:
+        """
+
+        def inner(func: Callable):
+            async def warp(*arg, **kwargs):
+                # Подключиться к ``Rabbitmq``
+                connection = await connect_robust(url)
+                # Подключиться к каналу
+                async with connection:
+                    rabbitmq: RabbitmqAsync = RabbitmqAsync(
+                        chanel=await connection.channel(channel_number=channel_number, publisher_confirms=False)
+                    )
+
+                    async with rabbitmq.chanel.transaction():
+                        #: Устанавливаем ограничения каналу для отправки сообщений в одну очередь
+                        #: Количество/размер сообщений, которые могут стоять в очереди для этого получателя.
+                        #: Если превысить эти значения, то сообщения отправятся другому свободному получателю.
+                        await rabbitmq.chanel.set_qos(
+                            # Макс количество сообщений
+                            prefetch_count=prefetch_count,
+                            # Макс размер очереди
+                            prefetch_size=prefetch_size
+                        )
+                        logger.rabbitmq_info(f"{channel_number=}", flag='CREATE_CHANEL')
+                        await func(
+                            *arg,
+                            rabbitmq=rabbitmq,
+                            # Имя очереди
+                            **kwargs
+                        )
 
             return warp
 
