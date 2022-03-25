@@ -13,14 +13,18 @@ from rbmqasync.rbmq import RabbitmqAsync
 class CallbackGetMessage(Protocol):
     async def __call__(self, message: Message) -> None:
         """
+        Эта функция вызывается в ``async with message.process(): ...``
+
         :param message: aio_pika.Message
         """
         ...
 
 
 class CallbackPublish(Protocol):
-    async def __call__(self, message_json: object, callback_get_message: Callable) -> None:
+    async def __call__(self, message_json: object, callback_get_message: CallbackGetMessage) -> None:
         """
+        функция для отправки данных на сервер
+
         :param message_json: Объект сериализуемый в JSON
         :param callback_get_message: Функция которая вызовется при получение ответа на это сообщение
         """
