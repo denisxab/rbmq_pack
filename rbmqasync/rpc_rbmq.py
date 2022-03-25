@@ -116,7 +116,7 @@ def RPCClient(
                     if message.correlation_id is not None:
                         # Обрабатываем полученное сообщение, подтверждения будет поле выхода из контекста
                         async with message.process():
-                            logger.rabbitmq_success (f"{message.correlation_id=}", "GET_MESSAGE")
+                            logger.rabbitmq_success(f"{message.correlation_id=}", "GET_MESSAGE")
                             # Вызываем функцию с таким id сообщения
                             await dict_callback[message.correlation_id](message)
                     else:
@@ -142,7 +142,7 @@ def RPCClient(
                         # Так как тип ``FANOUT`` нам неважен путь, он все равно про игнорируется.
                         routing_key='',
                     )
-                    logger.rabbitmq_success (f"{message_id=}|{message=}", "SEND MESSAGE")
+                    logger.rabbitmq_success(f"{message_id=}|{message=}", "SEND MESSAGE")
 
                 # Ожидаем сообщений, как только получим его то, выловится функцию
                 await rabbitmq.queue[0].consume(_get_message)
@@ -228,7 +228,7 @@ def RPCServer(
                         async with message.process():
                             # Десиреализуем данные
                             data = loads(message.body.decode())
-                            logger.rabbitmq_success (f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
+                            logger.rabbitmq_success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
                             # Выполняем полезную нагрузку
                             response: str = await func(data)
                             # Отправляем ответ
@@ -239,7 +239,7 @@ def RPCServer(
                                 ),
                                 routing_key=message.reply_to,
                             )
-                            logger.rabbitmq_success (message.reply_to, 'SEND MESSAGE')
+                            logger.rabbitmq_success(message.reply_to, 'SEND MESSAGE')
                     else:
                         logger.error(f"{message.reply_to=}", "REPLAY TO")
 
