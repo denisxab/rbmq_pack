@@ -20,7 +20,7 @@ RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBIT
     client_exchange='cl_exchange',
     RABBITMQ_URL=RABBITMQ_URL,
 )
-async def client_front(publish: CallbackPublish):
+async def client_front(publish: CallbackPublish) -> None:
     async def pr1(message: Message):
         logger.info(message.body, 'Web Js 1')
 

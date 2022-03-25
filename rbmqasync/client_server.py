@@ -1,6 +1,5 @@
-import json
 from asyncio import Future
-from json import dumps
+from json import dumps, loads
 from typing import Callable, Protocol, Union
 from uuid import uuid4
 
@@ -24,7 +23,7 @@ class CallbackGetMessage(Protocol):
 class CallbackRPCServer(Protocol):
     async def __call__(self, data: Union[object, dict, list]) -> str:
         """
-
+        Тип для оборачиваемой функции RPCServe
         """
         ...
 
@@ -36,6 +35,14 @@ class CallbackPublish(Protocol):
 
         :param message_json: Объект сериализуемый в JSON
         :param callback_get_message: Функция которая вызовется при получение ответа на это сообщение
+        """
+        ...
+
+
+class CallbackRPCClient(Protocol):
+    async def __call__(self, publish: CallbackPublish) -> None:
+        """
+        Тип для оборачиваемой функции RPCClient
         """
         ...
 
@@ -147,6 +154,10 @@ def RPCClient(
                 await Future()
 
             await _client()
+            # Оборачиваемая функция должна соответствовать типу ``CallbackRPCServer``
+
+        if func.__annotations__ != CallbackRPCClient.__call__.__annotations__:
+            raise AttributeError(f"Неверный тип функции, должен быть {CallbackRPCClient.__call__.__annotations__}")
 
         return wraper
 
@@ -158,14 +169,17 @@ def RPCServer(
         client_exchange: str,
         RABBITMQ_URL: str,
         name_sever_queue='server_queue',
+        prefetch_count=10,
+        prefetch_size=0,
 ):
     """
-
-    :param server_exchange:
-    :param client_exchange:
-    :param RABBITMQ_URL:
-    :param name_sever_queue:
-    :return:
+    :param server_exchange: Точка обмена для серверов (если нет то создастся)
+    :param client_exchange: Точка обмена для клиентов  (должна быть заранее создана)
+    :param RABBITMQ_URL: Url подключения к ``Rabbitmq``
+    :param name_sever_queue: Имя для общей очереди у серверов
+    :param prefetch_count: Максимальный размер очереди сообщений для одного канала
+    :param prefetch_size: Максимально количество сообщений в очереди для одного канала
+    :return: Оборачиваемая функция будет вызваться при получении сообщения
 
     :Пример:
 
@@ -189,7 +203,11 @@ def RPCServer(
     def innser(func: CallbackRPCServer):
         async def wraper(*args, **kwargs):
 
-            @RabbitmqAsync.Connect(RABBITMQ_URL)
+            @RabbitmqAsync.Connect(
+                RABBITMQ_URL,
+                prefetch_count=prefetch_count,
+                prefetch_size=prefetch_size,
+            )
             @RabbitmqAsync.Exchange(
                 # Обменник для ответов серверов, будем использовать ``routing_key`` для направления ответа
                 # в нужную очередь клиента, поэтому используем тип ``DIRECT``.
@@ -210,7 +228,7 @@ def RPCServer(
                         # Обрабатываем полученное сообщение
                         async with message.process():
                             # Десиреализуем данные
-                            data = json.loads(message.body.decode())
+                            data = loads(message.body.decode())
                             logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
                             # Выполняем полезную нагрузку
                             response: str = await func(data)
