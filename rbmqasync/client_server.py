@@ -1,6 +1,7 @@
+import json
 from asyncio import Future
 from json import dumps
-from typing import Callable, Protocol
+from typing import Callable, Protocol, Union
 from uuid import uuid4
 
 from aio_pika import ExchangeType, Message
@@ -16,6 +17,14 @@ class CallbackGetMessage(Protocol):
         Эта функция вызывается в ``async with message.process(): ...``
 
         :param message: aio_pika.Message
+        """
+        ...
+
+
+class CallbackRPCServer(Protocol):
+    async def __call__(self, data: Union[object, dict, list]) -> str:
+        """
+
         """
         ...
 
@@ -54,7 +63,7 @@ def RPCClient(
         client_exchange='cl_exchange',
         RABBITMQ_URL=RABBITMQ_URL,
     )
-    async def web_js(publish: CallbackPublish):
+    async def client_front(publish: CallbackPublish):
         async def pr1(message: Message):
             logger.info(message.body, 'Web Js 1')
 
@@ -68,7 +77,7 @@ def RPCClient(
 
 
     if __name__ == '__main__':
-        asyncio.run(web_js())
+        asyncio.run(client_front())
     """
 
     def innser(func):
@@ -88,7 +97,7 @@ def RPCClient(
                 # в который сервер будут отправлять ответ для клиента.
                 bind={server_exchange: (str(uuid4()),)}
             )
-            async def client_(rabbitmq: RabbitmqAsync):
+            async def _client(rabbitmq: RabbitmqAsync):
                 # Словарь для функций, ключ это id сообщения, значения это функция которая
                 # вызовется при получении сообщения с `correlation_id == message_id`.
                 dict_callback: dict[str, Callable] = {}
@@ -137,7 +146,97 @@ def RPCClient(
                 # Запускаем вечный цикл
                 await Future()
 
-            await client_()
+            await _client()
+
+        return wraper
+
+    return innser
+
+
+def RPCServer(
+        server_exchange: str,
+        client_exchange: str,
+        RABBITMQ_URL: str,
+        name_sever_queue='server_queue',
+):
+    """
+
+    :param server_exchange:
+    :param client_exchange:
+    :param RABBITMQ_URL:
+    :param name_sever_queue:
+    :return:
+
+    :Пример:
+
+    RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBITMQ_DEFAULT_PASS']}@{environ['RABBITMQ_IP']}{environ['RABBITMQ_DEFAULT_VHOST']}"
+
+
+    @RPCServer(
+        server_exchange='sv_exchange',
+        client_exchange='cl_exchange',
+        RABBITMQ_URL=RABBITMQ_URL,
+        name_sever_queue='server_queue'
+    )
+    async def server_back(data: Union[object, dict, list]) -> str:
+        return str(eval(data['data']))
+
+    if __name__ == '__main__':
+        asyncio.run(server_back())
+
+    """
+
+    def innser(func: CallbackRPCServer):
+        async def wraper(*args, **kwargs):
+
+            @RabbitmqAsync.Connect(RABBITMQ_URL)
+            @RabbitmqAsync.Exchange(
+                # Обменник для ответов серверов, будем использовать ``routing_key`` для направления ответа
+                # в нужную очередь клиента, поэтому используем тип ``DIRECT``.
+                name=server_exchange,
+                type_=ExchangeType.DIRECT
+            )
+            @RabbitmqAsync.Queue(
+                # Одна очередь для нескольких одинаковых серверов, которая ожидает сообщений от клиентов.
+                name=name_sever_queue,
+                exclusive=True,
+                # Так как обменник у клиентов типа ``FANOUT``, то путь будет игнорироваться, поэтому он пустой.
+                bind={client_exchange: ('',)}
+            )
+            async def _server(rabbitmq: RabbitmqAsync):
+                async def _get_message(message: AbstractIncomingMessage):
+                    # Если сообщение некуда возвращать, то игнорируем его
+                    if message.reply_to is not None:
+                        # Обрабатываем полученное сообщение
+                        async with message.process():
+                            # Десиреализуем данные
+                            data = json.loads(message.body.decode())
+                            logger.success(f"{message.correlation_id}|{data['data']}", 'GET MESSAGE')
+                            # Выполняем полезную нагрузку
+                            response: str = await func(data)
+                            # Отправляем ответ
+                            await rabbitmq.exchange[0].publish(
+                                Message(
+                                    body=response.encode(),
+                                    correlation_id=message.correlation_id,
+                                ),
+                                routing_key=message.reply_to,
+                            )
+                            logger.success(message.reply_to, 'SEND MESSAGE')
+                    else:
+                        logger.error(f"{message.reply_to=}", "REPLAY TO")
+
+                logger.info("Start", 'SERVER')
+                # Ожидаем сообщений, как только получим его то, выловится функцию
+                await rabbitmq.queue[0].consume(_get_message)
+                # Вечный цикл
+                await Future()
+
+            await _server()
+
+        # Оборачиваемая функция должна соответствовать типу ``CallbackRPCServer``
+        if func.__annotations__ != CallbackRPCServer.__call__.__annotations__:
+            raise AttributeError(f"Неверный тип функции, должен быть {CallbackRPCServer.__call__.__annotations__}")
 
         return wraper
 

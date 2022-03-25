@@ -20,7 +20,7 @@ RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBIT
     client_exchange='cl_exchange',
     RABBITMQ_URL=RABBITMQ_URL,
 )
-async def web_js(publish: CallbackPublish):
+async def client_front(publish: CallbackPublish):
     async def pr1(message: Message):
         logger.info(message.body, 'Web Js 1')
 
@@ -32,4 +32,4 @@ async def web_js(publish: CallbackPublish):
 
 
 if __name__ == '__main__':
-    asyncio.run(web_js())
+    asyncio.run(client_front())
