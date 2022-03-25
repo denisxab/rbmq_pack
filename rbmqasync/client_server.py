@@ -1,6 +1,6 @@
 from asyncio import Future
 from json import dumps
-from typing import Callable
+from typing import Callable, Protocol
 from uuid import uuid4
 
 from aio_pika import ExchangeType, Message
@@ -10,29 +10,47 @@ from logsmal import logger
 from rbmqasync.rbmq import RabbitmqAsync
 
 
+class CallbackGetMessage(Protocol):
+    async def __call__(self, message: Message) -> None:
+        """
+        :param message: aio_pika.Message
+        """
+        ...
 
-def Client(
+
+class CallbackPublish(Protocol):
+    async def __call__(self, message_json: object, callback_get_message: Callable) -> None:
+        """
+        :param message_json: Объект сериализуемый в JSON
+        :param callback_get_message: Функция которая вызовется при получение ответа на это сообщение
+        """
+        ...
+
+
+def RPCClient(
         server_exchange: str,
         client_exchange: str,
         RABBITMQ_URL: str,
 ):
     """
+    Декоратор для создания RPC клиента. Смысл в том чтобы выполнять трудоемкие задачи на стороне сервера
+    а клиент получит только готовый ответ.
 
     :param server_exchange: Точка обмена для серверов (должна быть заранее создана)
-    :param client_exchange: Точка обмена для клиентов
-    :param RABBITMQ_URL: Url подключения
+    :param client_exchange: Точка обмена для клиентов (если нет то создастся)
+    :param RABBITMQ_URL: Url подключения к ``Rabbitmq``
     :return: Функция для отправки сообщений на сервер ``publish``
 
     :Пример:
 
     RABBITMQ_URL: str = f"amqp://{environ['RABBITMQ_DEFAULT_USER']}:{environ['RABBITMQ_DEFAULT_PASS']}@{environ['RABBITMQ_IP']}{environ['RABBITMQ_DEFAULT_VHOST']}"
 
-    @Client(
+    @RPCClient(
         server_exchange='sv_exchange',
         client_exchange='cl_exchange',
         RABBITMQ_URL=RABBITMQ_URL,
     )
-    async def web_js(publish: Callable):
+    async def web_js(publish: CallbackPublish):
         async def pr1(message: Message):
             logger.info(message.body, 'Web Js 1')
 
@@ -71,7 +89,7 @@ def Client(
                 # вызовется при получении сообщения с `correlation_id == message_id`.
                 dict_callback: dict[str, Callable] = {}
 
-                async def get_message(message: AbstractIncomingMessage):
+                async def _get_message(message: AbstractIncomingMessage):
                     """
                     Получить сообщение
                     """
@@ -105,10 +123,10 @@ def Client(
                         # Так как тип ``FANOUT`` нам неважен путь, он все равно про игнорируется.
                         routing_key='',
                     )
-                    logger.success(f"{message_id}", "SEND MESSAGE")
+                    logger.success(f"{message_id=}|{message=}", "SEND MESSAGE")
 
                 # Ожидаем сообщений, как только получим его то, выловится функцию
-                await rabbitmq.queue[0].consume(get_message)
+                await rabbitmq.queue[0].consume(_get_message)
                 logger.info("Start Consume", "CLIENT")
                 # Вызываем функцию
                 await func(*args, publish=_publish, **kwargs)

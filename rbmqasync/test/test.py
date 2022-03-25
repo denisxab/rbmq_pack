@@ -85,7 +85,7 @@ class te_topic:
 if __name__ == '__main__':
     argv_ = '1'  # sys.argv[1]
     if argv_ == '1':
-        run(te_clint_server.Client())
+        run(te_clint_server.RPCClient())
         # run(te_topic.consumer_echange_topic1())
     elif argv_ == '2':
         run(te_clint_server.server())
